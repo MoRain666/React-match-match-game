@@ -12,7 +12,8 @@ class Score extends React.Component{
     componentDidMount(){
         fetch(URL)
         .then(response => response.json())
-        .then(data => this.props.getScore(data));
+        .then(data => this.props.getScore(data))
+        .catch(error => this.props.getScore(error));
     }
 
     render(){
