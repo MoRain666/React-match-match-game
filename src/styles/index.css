@@ -2,6 +2,7 @@
 @import url('./home.css');
 @import url('./score.css');
 @import url('./registration.css');
+@import url('./settings.css');
 body {
   width: 100%;
   height: 500px;

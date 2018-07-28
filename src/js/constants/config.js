@@ -1,6 +1,5 @@
-const Config = {
-    diff : [
-        {
+export const Config = {
+    diff: [{
             width: 4,
             height: 3
         },
@@ -13,28 +12,28 @@ const Config = {
             height: 4
         },
     ],
-    shirts : [
-        'images/shirts/shirt_1.png',
-        'images/shirts/shirt_2.png',
-        'images/shirts/shirt_3.png',
-        'images/shirts/shirt_4.png',
-        'images/shirts/shirt_5.png',
-        'images/shirts/shirt_6.png',
-        'images/shirts/shirt_7.png',
-        'images/shirts/shirt_8.png',
-        'images/shirts/shirt_9.png',
-        'images/shirts/shirt_10.png',
-        'images/shirts/shirt_11.png',
-        'images/shirts/shirt_12.png',
-        'images/shirts/shirt_13.png',
-        'images/shirts/shirt_14.png',
-        'images/shirts/shirt_15.png',
-        'images/shirts/shirt_16.png'
-     ],
-     backs : [
-        'images/backs/back_1.png',
-        'images/backs/back_2.png',
-        'images/backs/back_3.png',
-        'images/backs/back_4.png',
+    shirts: [
+        '../../img/shirts/shirt_1.png',
+        '../../img/shirts/shirt_2.png',
+        '../../img/shirts/shirt_3.png',
+        '../../img/shirts/shirt_4.png',
+        '../../img/shirts/shirt_5.png',
+        '../../img/shirts/shirt_6.png',
+        '../../img/shirts/shirt_7.png',
+        '../../img/shirts/shirt_8.png',
+        '../../img/shirts/shirt_9.png',
+        '../../img/shirts/shirt_10.png',
+        '../../img/shirts/shirt_11.png',
+        '../../img/shirts/shirt_12.png',
+        '../../img/shirts/shirt_13.png',
+        '../../img/shirts/shirt_14.png',
+        '../../img/shirts/shirt_15.png',
+        '../../img/shirts/shirt_16.png'
+    ],
+    backs: [
+        'back_1.png',
+        'back_2.png',
+        'back_3.png',
+        'back_4.png',
     ]
 }
