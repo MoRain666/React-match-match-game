@@ -1,4 +1,4 @@
-.start-page, .start-page-score{
+.start-page, .start-page-score, .registration{
     background-image: url('../img/backgrounds/backich.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -22,6 +22,8 @@
     justify-content: center;
     align-items: center;
     text-decoration: none;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
 }
 .home-buttons:hover , .score-button:hover{
     background-color: white;
