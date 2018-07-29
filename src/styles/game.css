@@ -1,0 +1,37 @@
+.game{
+    
+}
+.game-timer{
+    color: white;
+    font-size: 40px;
+}
+.game-cards-container{
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+}
+.RowCardContainer{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.game-card{
+    background-size: contain;
+    width: 100px;
+    height: 140px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.game-buttons-container{
+    width: 40%;
+    height: 10%;
+    display: flex;
+    justify-content: space-around;
+}
+.game-button{
+    width: 40%;
+    height: 100%;
+    font-size: 60px;
+}

@@ -19,7 +19,7 @@ class Registration extends React.Component{
             <label>Email:<input ref="email" type="email" placeholder="Enter a valid email address" required/></label>
             <div className="registration-button-container">
                 <Button className="registration-button" location="/" name="Back"/>
-                <input className="registration-button" type="submit" value="Next"/>
+                <input className="registration-button" type="submit" value="START"/>
             </div>
         </form>
         </div>

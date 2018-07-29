@@ -45,14 +45,14 @@ const mapStateToProps = state => {
     return {
       stateOfScore: state.score
     };
-  };
+};
 
-  const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = dispatch => {
     return{
         getScore: data =>{
             dispatch(getScore(data))
         }
     }
-  }
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Score);

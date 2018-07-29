@@ -3,6 +3,7 @@
 @import url('./score.css');
 @import url('./registration.css');
 @import url('./settings.css');
+@import url('./game.css');
 body {
   width: 100%;
   height: 500px;

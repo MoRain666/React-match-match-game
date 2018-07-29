@@ -5,6 +5,7 @@ const Card = (props) => {
     const click = () => {
         props.click(props.back)
     }
+
     const check = () => {
         if(props.back === props.currentBack){
             return {
