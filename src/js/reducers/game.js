@@ -11,7 +11,8 @@ import {
     CLEAR_CHECK_ARRAY,
     CHANGE_THE_VISIBILITY,
     PAIRS_FOUND,
-    POST_MY_RESULT
+    POST_MY_RESULT,
+    SET_UNMATCHED
 } from './../actions/index';
 
 export default (state = {
@@ -38,7 +39,8 @@ export default (state = {
             for (let i = 0; i < action.lengthOfArray; i++) {
                 newObgWidthShirts.shirts.push({
                     isVisible: true,
-                    isClicked: false
+                    isClicked: false,
+                    isMatched: false
                 });
             }
             return newObgWidthShirts;
@@ -120,6 +122,15 @@ export default (state = {
             });
             return state;
 
+        case SET_UNMATCHED:
+            const objToChangeUnmatched = {...state};
+            if (objToChangeUnmatched.shirts[action.indexInArray].isMatched === false) {
+                objToChangeUnmatched.shirts[action.indexInArray].isMatched = true;
+            } else {
+                objToChangeUnmatched.shirts[action.indexInArray].isMatched = false;
+            }
+            return objToChangeUnmatched
+        
         default:
             return state;
     }

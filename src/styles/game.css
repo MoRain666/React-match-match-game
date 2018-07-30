@@ -1,6 +1,4 @@
-.game{
-    
-}
+
 .game-timer{
     color: white;
     font-size: 40px;
@@ -35,6 +33,21 @@
     height: 100%;
     font-size: 60px;
 }
+.game{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.end-of-game{
+	font-size: 60px;
+    text-align: center;
+    color: white;
+	font-weight: bolder;
+	background-color: rgba(165, 42, 42, 0.7);
+	width: 80%;
+	border-radius: 20px;
+	margin-bottom: 5%;
+}
 
 .clicked{
     animation-name: flipInY;
@@ -45,10 +58,6 @@
 	visibility: hidden;
 }
 
-.unmatched{
-	animation-name: pulse;
-	animation-duration: .75s;
-}
 /*clicked*/
 @keyframes flipInY {
 	from {
@@ -73,20 +82,5 @@
 
 	to {
 		transform: perspective(400px);
-	}
-}
-
-/*unmatched*/
-@keyframes pulse {
-	from {
-		transform: scale3d(1, 1, 1);
-	}
-
-	50% {
-		transform: scale3d(1.2, 1.2, 1.2);
-	}
-
-	to {
-		transform: scale3d(1, 1, 1);
 	}
 }

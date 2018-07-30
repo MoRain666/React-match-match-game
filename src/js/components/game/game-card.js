@@ -1,40 +1,38 @@
 import React from 'react';
 import { connect } from "react-redux";
 import LoadingScreen from './../LoadingScreen/index';
-import { pushToCheck, changeTheIsClicked, clearCheckArray, changeTheVisibility, pairsFound} from '../../actions/index';
+import { pushToCheck, changeTheIsClicked, clearCheckArray, changeTheVisibility, pairsFound, setUnmatched} from '../../actions/index';
+import { FIRST_CARD_TO_CHECK, SECOND_CARD_TO_CHECK, NUMBER_FOR_PAIR, TIME_FOR_ANIMATION } from './../../constants/constants';
 
 class CardOfGame extends React.Component{
 
     cliked = () => {
-        if(this.props.arrayInCheck.length === 2) return;
-        const numberOfCard = this.props.width * this.props.indexA + this.props.indexB ;
-        const numberOfCardInArray = numberOfCard - 1;
-        if(this.props.arrayInCheck.length === 1 && this.props.arrayInCheck[0].numberInArray === numberOfCardInArray) return;
+        if(this.props.arrayInCheck.length === NUMBER_FOR_PAIR) return;
+        const numberOfCardInArray = this.props.width * this.props.indexA + this.props.indexB - 1;
+        if(this.props.arrayInCheck.length === 1 && this.props.arrayInCheck[FIRST_CARD_TO_CHECK].numberInArray === numberOfCardInArray) return;
         const nameOfCard = this.props.arrayOfShirts[numberOfCardInArray];
         this.props.pushToCheck(numberOfCardInArray, nameOfCard);
         this.props.changeTheIsClicked(numberOfCardInArray);
-        if(this.props.arrayInCheck.length === 2){
-            if(this.props.arrayInCheck[0].cardName !== this.props.arrayInCheck[1].cardName){
+        if(this.props.arrayInCheck.length === NUMBER_FOR_PAIR){
+            if(this.props.arrayInCheck[FIRST_CARD_TO_CHECK].cardName !== this.props.arrayInCheck[SECOND_CARD_TO_CHECK].cardName){
                 setTimeout(()=>{
-                    this.props.changeTheIsClicked(this.props.arrayInCheck[0].numberInArray);
-                    this.props.changeTheIsClicked(this.props.arrayInCheck[1].numberInArray);
+                    this.props.changeTheIsClicked(this.props.arrayInCheck[FIRST_CARD_TO_CHECK].numberInArray);
+                    this.props.changeTheIsClicked(this.props.arrayInCheck[SECOND_CARD_TO_CHECK].numberInArray);
                     this.props.clearCheckArray();
-                },1500)
+                },TIME_FOR_ANIMATION)
             }else{
                 setTimeout(()=>{
-                    this.props.changeTheVisibility(this.props.arrayInCheck[0].numberInArray);
-                    this.props.changeTheVisibility(this.props.arrayInCheck[1].numberInArray);
+                    this.props.changeTheVisibility(this.props.arrayInCheck[FIRST_CARD_TO_CHECK].numberInArray);
+                    this.props.changeTheVisibility(this.props.arrayInCheck[SECOND_CARD_TO_CHECK].numberInArray);
                     this.props.clearCheckArray();
                     this.props.pairsFound();
-                },1500)
+                },TIME_FOR_ANIMATION)
             }
         }
-        console.log(this.props.countPairsFound)
     }
 
     backGroundOfCard = () => {
-        const numberOfCard = this.props.width * this.props.indexA + this.props.indexB ;
-        const numberOfCardInArray = numberOfCard - 1;
+        const numberOfCardInArray = this.props.width * this.props.indexA + this.props.indexB - 1;
         const backImageUrl = require(`../../../img/backs/${this.props.back}`);
         const shirtImageUrl = require(`../../../img/shirts/${this.props.arrayOfShirts[numberOfCardInArray]}`);
         let back = {backgroundImage:`url(${backImageUrl})`};
@@ -46,19 +44,24 @@ class CardOfGame extends React.Component{
 
 
     classNameOfCard = () => {
-        const numberOfCard = this.props.width * this.props.indexA + this.props.indexB ;
-        const numberOfCardInArray = numberOfCard - 1;
-        if(this.props.objectOfShirts[numberOfCardInArray].isVisible){
-            return "game-card";
+        const numberOfCardInArray = this.props.width * this.props.indexA + this.props.indexB -1 ;
+        const className = "game-card ";
+        const whenClicked = "clicked ";
+        const whenHidden = "hidden";
+        if(this.props.objectOfShirts[numberOfCardInArray].isClicked){
+            if(this.props.objectOfShirts[numberOfCardInArray].isClicked && !this.props.objectOfShirts[numberOfCardInArray].isVisible){
+                return className + whenClicked + whenHidden;
+            }
+            return className + whenClicked;
         }else{
-            return "game-card hidden"
+            return className
         }
     }
 
     render(){
         const backGround = this.backGroundOfCard();
         const className = this.classNameOfCard()
-        if(this.props.arrayOfShirts.length === 0/*this.props.height * this.props.width*/ || typeof this.props.arrayOfShirts === 'undefined'){
+        if(this.props.arrayOfShirts.length === 0 || typeof this.props.arrayOfShirts === 'undefined'){
             return <LoadingScreen />
         }
         return <div onClick={this.cliked} style={backGround} className={className}></div>
@@ -95,6 +98,9 @@ const mapStateToProps = state => {
         },
         changeTheVisibility: number => {
             dispatch(changeTheVisibility(number))
+        },
+        setUnmatched: number => {
+            dispatch(setUnmatched(number))
         }
     }
   }

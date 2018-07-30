@@ -30,9 +30,19 @@ class Game extends React.Component {
     }
   }
 
+  endOfGame = () => {
+    return <div className="game">
+    <p className="end-of-game">You're a superstar! May today's success be the beginning of tomorrow's achievements.</p>
+    <div className="game-buttons-container">
+      <Button className="game-button" name="Home" location="/"/>
+      <Button className="game-button" name="Back" location="/settings"/>
+    </div>
+  </div>
+  }
+
     render() {
       const width = this.props.width * this.props.height / 2;
-      //if(this.props.countPairsFound === width) return <p>ITS WORKED!</p>
+      if(this.props.countPairsFound === width) return this.endOfGame()
       return <div className="game">
       <Timer />
       <div className="game-cards-container">

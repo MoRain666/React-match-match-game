@@ -13,6 +13,7 @@ export const CLEAR_CHECK_ARRAY = "CLEAR_CHECK_ARRAY";
 export const CHANGE_THE_VISIBILITY = "CHANGE_THE_VISIBILITY";
 export const PAIRS_FOUND = "PAIRS_FOUND";
 export const POST_MY_RESULT = "POST_MY_RESULT";
+export const SET_UNMATCHED = "SET_UNMATCHED";
 
 
 export const getScore = data => {
@@ -118,5 +119,12 @@ export const postMyResult = (name, email, score) =>{
         name: name,
         email: email,
         score: score
+    }
+}
+
+export const setUnmatched = (number) => {
+    return {
+        type: SET_UNMATCHED,
+        indexInArray: number,
     }
 }

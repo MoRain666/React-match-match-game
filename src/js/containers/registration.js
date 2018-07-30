@@ -11,12 +11,16 @@ class Registration extends React.Component{
         this.props.history.push('/settings');
     }
 
+    componentDidMount(){
+        this.refs.name.focus();
+    }
+
     render(){
         return <div className='registration'>
         <h3>Welcome to match-match game, sign up pls!</h3>
         <form onSubmit={this.setToStorage}>
             <label>Name:<input ref="name" type="text" required placeholder="Enter a name"/></label>
-            <label>Email:<input ref="email" type="email" placeholder="Enter a valid email address" required/></label>
+            <label>Email:<input ref="email" type="email" placeholder="Enter a valid email address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required/></label>
             <div className="registration-button-container">
                 <Button className="registration-button" location="/" name="Back"/>
                 <input className="registration-button" type="submit" value="START"/>

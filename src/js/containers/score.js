@@ -6,6 +6,7 @@ import { getScore } from './../actions/index';
 import CellOfTable from './../components/score/cellOfTable';
 import { compareFunc } from './../utils/utils';
 import Button from './../components/home/Button';
+import {TOP_OF_SCORE_FOR_RENDER} from '../constants/constants';
 
 class Score extends React.Component{
 
@@ -21,7 +22,7 @@ class Score extends React.Component{
         const fullList = this.props.stateOfScore.result.slice().sort(compareFunc);
         const list = fullList.map((item, index) =>{
             return <CellOfTable key={index} name={item.username} email={item.email} score={item.score}/>
-        }).slice(0, 10);
+        }).slice(0, TOP_OF_SCORE_FOR_RENDER);
         return <div className='start-page-score'>
         <h3 className="score-message">Here are the best!</h3>
         <table>
