@@ -8,6 +8,6 @@ const matchMatchGame = combineReducers({
     score,
     requisites,
     settings,
-    game
+    game,
 });
 export default matchMatchGame;

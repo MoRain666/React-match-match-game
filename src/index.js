@@ -9,7 +9,6 @@ import RouterApp from './js/components/router';
 import { logger } from './js/middleware/index';
 
 const store = createStore(matchMatchGame, applyMiddleware(logger));
-
 ReactDOM.render(
     <Provider store={store}>
         <RouterApp />

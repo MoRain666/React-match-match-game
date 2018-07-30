@@ -4,10 +4,18 @@ export const SET_SETTIGNS = "SET_SETTIGNS";
 export const SET_BACK = "SET_BACK";
 export const SET_NEW_TIME = "SET_NEW_TIME";
 export const SET_TIME = "SET_TIME";
-export const SHIRTS_INIT = "SHIRTS_INIT";
+export const ARRAY_OF_SHIRTS_INIT = "ARRAY_OF_SHIRTS_INIT";
+export const OBJECT_OF_SHIRTS_INIT = "OBJECT_OF_SHIRTS_INIT";
+export const REMOVAL_OF_STATES = "REMOVAL_OF_STATES";
+export const PUSH_TO_CHECK = "PUSH_TO_CHECK";
+export const CHANGE_THE_ISCLICKED = "CHANGE_THE_ISCLICKED";
+export const CLEAR_CHECK_ARRAY = "CLEAR_CHECK_ARRAY";
+export const CHANGE_THE_VISIBILITY = "CHANGE_THE_VISIBILITY";
+export const PAIRS_FOUND = "PAIRS_FOUND";
+export const POST_MY_RESULT = "POST_MY_RESULT";
 
 
-export const getScore = (data) => {
+export const getScore = data => {
     return {
         type: GET_SCORE,
         payload: data
@@ -30,14 +38,14 @@ export const setSettings = (width, height) => {
     }
 }
 
-export const setBack = (back) => {
+export const setBack = back => {
     return {
         type: SET_BACK,
         back: back
     }
 }
 
-export const setNewTime = (currentTime) => {
+export const setNewTime = currentTime => {
     return {
         type: SET_NEW_TIME,
         currentTime: currentTime
@@ -50,9 +58,65 @@ export const setTime = () => {
     }
 }
 
-export const shirtsInit = (width) => {
+export const arrayOfShirtsInit = currentIndex => {
     return {
-        type: SHIRTS_INIT,
-        payload: width
+        type: ARRAY_OF_SHIRTS_INIT,
+        currentIndex: currentIndex
+    }
+}
+
+export const ObjectOfShirtsInit = (number) => {
+    return {
+        type: OBJECT_OF_SHIRTS_INIT,/* переделать этот экшен */
+        lengthOfArray: number
+    }
+}
+
+export const removalOfStates = () => {
+    return {
+        type: REMOVAL_OF_STATES
+    }
+}
+
+export const pushToCheck = (number, name) => {
+    return {
+        type: PUSH_TO_CHECK,
+        numberInArray: number,
+        cardName: name
+    }
+}
+
+export const changeTheIsClicked = (number) => {
+    return {
+        type: CHANGE_THE_ISCLICKED,
+        indexInArray: number,
+    }
+}
+
+export const clearCheckArray = () => {
+    return {
+        type: CLEAR_CHECK_ARRAY
+    }
+}
+
+export const changeTheVisibility = (number) => {
+    return {
+        type: CHANGE_THE_VISIBILITY,
+        indexInArray: number
+    }
+}
+
+export const pairsFound = () => {
+    return {
+        type: PAIRS_FOUND
+    }
+}
+
+export const postMyResult = (name, email, score) =>{
+    return {
+        type: POST_MY_RESULT,
+        name: name,
+        email: email,
+        score: score
     }
 }

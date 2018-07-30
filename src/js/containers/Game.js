@@ -3,23 +3,40 @@ import { connect } from "react-redux";
 import RowCardContainer from './../components/game/rowCardContainer';
 import Timer from './../components/game/timer';
 import Button from './../components/home/Button';
-import { shirtsInit } from './../actions/index';
+import { arrayOfShirtsInit, removalOfStates, ObjectOfShirtsInit, postMyResult } from './../actions/index';
 
 class Game extends React.Component {
 
-  componentDidMount(){
-    this.props.shirtsInit(this.props.width * this.props.height / 2);
+  componentWillUnmount(){
+    this.props.removalOfStates()
   }
-
-  render() {
+  cardsInit = () => {
     const List = [];
     for(let i = 0; i < this.props.height; i++){
         List.push(<RowCardContainer width={this.props.width} key={i} index={i}/>);
     }
-    return <div className="game">
+    return List;
+  }
+  componentWillMount(){
+    const width = this.props.width * this.props.height / 2;
+    this.props.arrayOfShirtsInit(width);
+    this.props.ObjectOfShirtsInit(this.props.arrayOfShirts.length);
+  }
+
+  componentDidUpdate(){
+    const width = this.props.width * this.props.height / 2;
+    if(this.props.countPairsFound === width){
+      this.props.postMyResult(this.props.name, this.props.email, this.props.score)
+    }
+  }
+
+    render() {
+      const width = this.props.width * this.props.height / 2;
+      //if(this.props.countPairsFound === width) return <p>ITS WORKED!</p>
+      return <div className="game">
       <Timer />
       <div className="game-cards-container">
-      {List}
+      {this.cardsInit()}
       </div>
       <div className="game-buttons-container">
         <Button className="game-button" name="Home" location="/"/>
@@ -33,14 +50,28 @@ const mapStateToProps = state => {
     width: state.settings.width,
     height: state.settings.height,
     back: state.settings.back,
-    shirts: state.game.shirts
+    arrayOfShirts: state.game.arrayOfShirts,
+    objectOfShirts: state.game.shirts,
+    countPairsFound: state.game.pairsCount,
+    name: state.requisites.name,
+    email: state.requisites.email,
+    score: state.game.currentTime
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return{
-    shirtsInit: (width) => {
-      dispatch(shirtsInit(width))
+    arrayOfShirtsInit: width => {
+      dispatch(arrayOfShirtsInit(width))
+    },
+    removalOfStates: () => {
+      dispatch(removalOfStates())
+    },
+    ObjectOfShirtsInit: number => {
+      dispatch(ObjectOfShirtsInit(number))
+    },
+    postMyResult: (name, email, score) => {
+      dispatch(postMyResult(name, email, score))
     }
   }
 }

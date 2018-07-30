@@ -13,6 +13,12 @@ class Timer extends React.Component {
         clearInterval(this.timer);
     }
 
+    componentDidUpdate() {
+        if(this.props.countOfPairs === this.props.width * this.props.height / 2){
+            clearInterval(this.timer);
+        }
+    }
+
     render() {
         return <div className="game-timer">
             {this.props.currentTime} seconds left
@@ -22,7 +28,10 @@ class Timer extends React.Component {
 
 const mapStateToProps = state => {
     return {
-      currentTime: state.game.currentTime
+      currentTime: state.game.currentTime,
+      countOfPairs: state.game.pairsCount,
+      width: state.settings.width,
+      height: state.settings.height,
     };
 };
 
